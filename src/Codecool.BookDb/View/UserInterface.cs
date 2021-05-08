@@ -21,31 +21,73 @@ namespace Codecool.BookDb.View
 
         public char Choice(string options)
         {
-            // Given string options -> "abcd"
-            // keep asking user for input until one of provided chars is provided
-            throw new NotImplementedException();
+            string line;
+            
+            do
+            {
+                Console.WriteLine($"Choice [{options}]: ");
+                line = Console.ReadLine();
+            } while (!(line.Length == 1 && options.Contains(line)));
+
+            return line[0];
         }
 
+        private void PrintPrompt(string prompt, object defaultValue)
+        {
+            Console.WriteLine($"{prompt} [{defaultValue}]");
+        }
+        
         public string ReadString(string prompt, string defaultValue)
         {
-            // Ask user for data. If no data was provided use default value.
-            // User must be informed what the default value is.
-            throw new NotImplementedException();
+            PrintPrompt(prompt, defaultValue);
+            string line = Console.ReadLine();
+            return string.IsNullOrEmpty(line) ? defaultValue : line;
         }
 
         public DateTime ReadDate(string prompt, DateTime defaultValue)
         {
-            // Ask user for a date. If no data was provided use default value.
-            // User must be informed what the default value is.
-            // If provided date is in invalid format, ask user again.
-            throw new NotImplementedException();
+            while (true)
+            {
+                PrintPrompt(prompt, defaultValue.Date.ToString("MM/dd/yyyy"));
+                string line = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(line))
+                {
+                    return defaultValue;
+                }
+
+                try
+                {
+                    return Convert.ToDateTime(line);
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Bad data format! Specify in the following way: MM/dd/yyyy");
+                }
+            }
         }
         
         public int ReadInt(string prompt, int defaultValue)
         {
-            // Ask user for a number. If no data was provided use default value.
-            // User must be informed what the default value is.
-            throw new NotImplementedException();
+            while (true)
+            {
+                PrintPrompt(prompt, defaultValue);
+                string line = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(line))
+                {
+                    return defaultValue;
+                }
+
+                try
+                {
+                    return int.Parse(line);
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Enter an integer");
+                }
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Codecool.BookDb.Model
 
         public override string ToString()
         {
-            return new string($"{Id}, {FirstName}, {LastName}, {BirthDate: MM/dd/yyyy}");
+            return new string($"{Id}, {FirstName}, {LastName}, {BirthDate:MM/dd/yyyy}");
         }
     }
 }

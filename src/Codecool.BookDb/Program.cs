@@ -1,4 +1,7 @@
 using System;
+using Codecool.BookDb.Manager;
+using Codecool.BookDb.Model;
+using Codecool.BookDb.View;
 
 namespace Codecool.BookDb
 {
@@ -6,7 +9,15 @@ namespace Codecool.BookDb
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                UserInterface ui = new UserInterface();
+                new BookDbManager(ui).Run();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
     }
 }

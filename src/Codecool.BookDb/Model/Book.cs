@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace Codecool.BookDb.Model
 {
     public class Book
@@ -14,6 +16,13 @@ namespace Codecool.BookDb.Model
 
         public override string ToString()
         {
+            // string firstName = "UNKNOW";
+            // string lastName = "UNKNOWN";
+            // if (Author != null)
+            // {
+            //     firstName = Author.FirstName;
+            //     lastName = Author.LastName;
+            // }
             return new string($"{Id}, {Title}, {Author.FirstName}, {Author.LastName}");
         }
     }
