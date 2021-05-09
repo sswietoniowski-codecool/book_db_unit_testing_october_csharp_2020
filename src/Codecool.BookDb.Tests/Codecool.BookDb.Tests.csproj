@@ -20,4 +20,8 @@
       <Compile Remove="UnitTest1.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Codecool.BookDb\Codecool.BookDb.csproj" />
+    </ItemGroup>
+
 </Project>
