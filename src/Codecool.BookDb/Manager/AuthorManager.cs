@@ -45,6 +45,14 @@ namespace Codecool.BookDb.Manager
                 return;
             }
             _ui.PrintLn(author);
+            
+            string firstName = _ui.ReadString("First name", author.FirstName);
+            string lastName = _ui.ReadString("Last name", author.LastName);
+            DateTime birthDate = _ui.ReadDate("Birth date", author.BirthDate);
+            author.FirstName = firstName;
+            author.LastName = lastName;
+            author.BirthDate = birthDate;
+            _authorDao.Update(author);
         }
     }
 }
